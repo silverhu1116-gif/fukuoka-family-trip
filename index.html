@@ -9,40 +9,52 @@
     :root { --navy:#102a43; --blue:#2563eb; --sky:#eff6ff; --ink:#1f2937; --muted:#64748b; --line:#dce5ef; --card:#fff; --green:#157f4a; --amber:#a16207; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; background:#f5f7fb; color:var(--ink); font:16px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
-    .wrap { width:min(1040px,calc(100% - 32px)); margin:auto; }
+    body { margin:0; background:#f4f7fb; color:var(--ink); font:16px/1.68 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; word-break:keep-all; overflow-wrap:anywhere; }
+    .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
     .hero { color:#fff; background:linear-gradient(135deg,#0f3152 0%,#0d5c87 57%,#0e7490 100%); padding:56px 0 44px; }
     .eyebrow { margin:0 0 8px; color:#bce7ff; font-size:.9rem; font-weight:750; letter-spacing:.08em; }
     h1 { margin:0; font-size:clamp(2rem,6vw,3.55rem); line-height:1.15; letter-spacing:-.05em; }
     .subtitle { margin:14px 0 0; color:#e5f4ff; font-size:clamp(1rem,2vw,1.2rem); }
     .pill-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
     .pill { padding:7px 11px; border:1px solid #ffffff44; border-radius:999px; background:#ffffff16; font-weight:650; font-size:.9rem; }
-    main { padding:32px 0 64px; }
-    section { margin-top:38px; }
-    h2 { margin:0 0 15px; font-size:1.43rem; letter-spacing:-.03em; color:var(--navy); }
-    h3 { margin:0; font-size:1.04rem; letter-spacing:-.02em; }
-    .notice { padding:13px 16px; border-left:4px solid var(--blue); border-radius:8px; background:var(--sky); color:#20456d; }
+    main { padding:38px 0 72px; }
+    section { margin-top:44px; }
+    h2 { margin:0 0 17px; font-size:clamp(1.45rem,2.2vw,1.8rem); line-height:1.3; letter-spacing:-.035em; color:var(--navy); }
+    h3 { margin:0; font-size:1.08rem; line-height:1.42; letter-spacing:-.025em; }
+    p { margin-top:0; }
+    .notice { padding:16px 18px; border-left:4px solid var(--blue); border-radius:12px; background:var(--sky); color:#20456d; line-height:1.65; }
     .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .card { padding:20px; border:1px solid var(--line); border-radius:14px; background:var(--card); box-shadow:0 1px 2px #0f172a08; }
+    .trip-overview .grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .trip-overview .card { min-height:154px; border:0; box-shadow:0 8px 20px #102a4310; }
+    .trip-overview .card:first-child { grid-column:span 2; color:#fff; background:linear-gradient(135deg,#123b61,#16749d); }
+    .trip-overview .card:first-child p,.trip-overview .card:first-child strong { color:#e8f6ff; }
+    .trip-overview .card:nth-child(2) { background:#edf7ff; }
+    .trip-overview .card:nth-child(3) { background:#fff5e8; }
+    .card { padding:23px; border:1px solid var(--line); border-radius:16px; background:var(--card); box-shadow:0 1px 2px #0f172a08; }
     .card .icon { font-size:1.55rem; display:block; margin-bottom:8px; }
-    .card p { margin:7px 0 0; color:var(--muted); font-size:.94rem; }
+    .card p { margin:9px 0 0; color:#52677c; font-size:.96rem; line-height:1.68; }
     .card strong { color:var(--ink); }
     .tabs { display:flex; gap:8px; overflow-x:auto; padding-bottom:5px; }
-    button { appearance:none; cursor:pointer; border:1px solid var(--line); border-radius:999px; padding:10px 15px; color:#38516e; background:#fff; font:inherit; font-weight:750; white-space:nowrap; }
-    button[aria-selected="true"] { border-color:var(--blue); background:var(--blue); color:#fff; }
-    .theme-intro { margin:17px 0 10px; padding:17px 19px; border-radius:12px; background:#f0fdfa; color:#174c4c; }
-    .theme-intro p { margin:4px 0 0; }
+    button { appearance:none; cursor:pointer; border:1px solid var(--line); border-radius:12px; padding:11px 15px; color:#38516e; background:#fff; font:inherit; font-weight:750; white-space:nowrap; transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease; }
+    button:hover { border-color:#7aa4ec; box-shadow:0 4px 12px #2563eb18; transform:translateY(-1px); }
+    button:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }
+    button[aria-selected="true"] { border-color:var(--blue); background:var(--blue); color:#fff; box-shadow:0 5px 12px #2563eb30; }
+    .tab-group > .tabs { gap:7px; margin:14px 0 4px; padding:5px; border:1px solid #dce5ef; border-radius:13px; background:#f8fafc; }
+    .tab-group > .tabs button { flex:1; min-height:46px; border-color:transparent; border-radius:9px; background:transparent; color:#455d76; font-size:.95rem; }
+    .tab-group > .tabs button[aria-selected="true"] { color:#174ea6; background:#fff; border-color:#bdd3f5; box-shadow:0 2px 8px #2563eb16; }
+    .theme-intro { margin:18px 0 12px; padding:20px 22px; border-radius:15px; background:#f0fdfa; color:#174c4c; }
+    .theme-intro p { margin:6px 0 0; color:#356761; }
     .schedule { display:grid; gap:12px; }
-    .day { display:grid; grid-template-columns:102px 1fr; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; }
+    .day { display:grid; grid-template-columns:110px 1fr; border:1px solid var(--line); border-radius:17px; overflow:hidden; background:#fff; }
     .day-label { display:flex; flex-direction:column; justify-content:center; align-items:center; padding:18px 12px; color:#fff; background:var(--navy); text-align:center; font-weight:800; }
     .day-label small { margin-top:2px; color:#bfdbfe; font-weight:650; }
-    .day-body { padding:13px 18px; }
-    .item { display:grid; grid-template-columns:100px 1fr; gap:12px; padding:11px 0; border-bottom:1px solid #edf1f5; }
+    .day-body { padding:15px 21px; }
+    .item { display:grid; grid-template-columns:108px 1fr; gap:14px; padding:13px 0; border-bottom:1px solid #e8eef5; }
     .item:last-child { border:0; padding-bottom:3px; }
-    .time { color:var(--blue); font-size:.88rem; font-weight:800; }
-    .place { font-weight:760; }
-    .detail { margin-top:2px; color:var(--muted); font-size:.92rem; }
-    .travel { display:inline-block; margin-top:5px; color:#52677c; font-size:.84rem; }
+    .time { color:#1455c0; font-size:.91rem; font-weight:800; }
+    .place { color:#172f47; font-weight:780; }
+    .detail { margin-top:3px; color:#52677c; font-size:.95rem; line-height:1.62; }
+    .travel { display:inline-block; margin-top:6px; color:#52677c; font-size:.87rem; }
     .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     .info-grid .card { min-height:100%; }
     .facts { margin:12px 0 0; padding:0; list-style:none; }
@@ -51,35 +63,123 @@
     .facts b { display:inline-block; min-width:86px; color:#47617a; font-size:.9rem; }
     .guide-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
     .major-tab-group { margin-top:38px; }
-    .major-tabs { margin:0 0 22px; padding:7px; border:1px solid var(--line); border-radius:16px; background:#fff; box-shadow:0 1px 2px #0f172a08; }
-    .major-tabs button { flex:1; min-width:max-content; }
+    .major-tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:0 0 24px; padding:10px; overflow:visible; border:1px solid #cddced; border-radius:20px; background:linear-gradient(145deg,#f8fbff,#eff5fb); box-shadow:0 8px 24px #163b6612; }
+    .major-tabs button { display:flex; align-items:center; gap:12px; min-width:0; min-height:82px; padding:14px 17px; border:1px solid #d5e1ee; border-radius:14px; color:#294766; background:#fff; text-align:left; }
+    .major-tabs button:hover { border-color:#82a9eb; background:#fbfdff; }
+    .major-tabs button[aria-selected="true"] { border-color:#2463d9; color:#fff; background:linear-gradient(135deg,#2563eb,#1d4ed8); box-shadow:0 9px 19px #1d4ed83d; }
+    .major-tabs .tab-icon { display:grid; flex:none; place-items:center; width:42px; height:42px; border-radius:12px; background:#eaf2ff; font-size:1.45rem; }
+    .major-tabs button[aria-selected="true"] .tab-icon { background:#ffffff20; }
+    .major-tabs .tab-label { display:grid; gap:3px; min-width:0; }
+    .major-tabs strong { font-size:1.08rem; line-height:1.35; letter-spacing:-.02em; }
+    .major-tabs small { color:#5e7690; font-size:.79rem; line-height:1.45; font-weight:650; white-space:normal; }
+    .major-tabs button[aria-selected="true"] small { color:#dbeafe; }
+    .major-panel { position:relative; margin-top:0; padding:clamp(18px,3vw,32px); overflow:hidden; border:1px solid #dbe5f0; border-radius:28px; box-shadow:0 16px 38px #163b6610; }
+    .major-panel::before { content:''; position:absolute; width:280px; height:280px; border-radius:50%; opacity:.55; filter:blur(2px); pointer-events:none; }
+    .major-panel[hidden] { display:none!important; }
+    .bento-content { position:relative; z-index:1; margin-top:0; }
+    .bento-content > h2 { display:flex; align-items:center; min-height:112px; margin:0; padding:26px; border-radius:20px; color:#102a43; background:#fff; box-shadow:0 6px 16px #102a430b; font-size:clamp(1.5rem,2.5vw,2rem); }
+    .bento-schedule { background:linear-gradient(135deg,#edf6ff 0%,#f9fcff 48%,#f2f8ff 100%); }
+    .bento-schedule::before { top:-100px; right:-90px; background:#b6dcff; }
+    .bento-schedule .bento-content { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(250px,.8fr); gap:14px; }
+    .bento-schedule .bento-content > h2 { grid-column:1; }
+    .bento-schedule .guide-note { display:flex; align-items:center; margin:0; padding:22px; border:0; border-radius:20px; color:#294b68; background:#dceeff; font-size:.96rem; line-height:1.7; }
+    .bento-schedule .tab-group > .tabs { grid-column:1 / -1; margin:0; padding:7px; border:0; border-radius:16px; background:#fff; box-shadow:0 5px 14px #194b7510; }
+    .bento-schedule .tab-group > [role="tabpanel"] { grid-column:1 / -1; }
+    .bento-schedule .theme-intro { border:1px solid #cce5df; box-shadow:0 5px 15px #0f766e0d; }
+    .bento-schedule .schedule { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .bento-schedule .day { box-shadow:0 5px 15px #102a430d; }
+    .bento-schedule .day:first-child { grid-column:1 / -1; }
+    .bento-schedule .day:first-child .day-label { background:linear-gradient(160deg,#123b61,#166797); }
+    .bento-places { background:linear-gradient(135deg,#fff8ed 0%,#fffdf9 45%,#f5f1ff 100%); }
+    .bento-places::before { top:-125px; left:-70px; background:#ffd9a8; }
+    .bento-places .bento-content { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr); gap:14px; }
+    .bento-places .bento-content > h2 { grid-column:1; }
+    .bento-places .notice { display:flex; align-items:center; margin:0; border-color:#ea9c35; border-radius:20px; background:#fff0d8; color:#70410c; font-size:.96rem; }
+    .bento-places .tab-group > .tabs { grid-column:1 / -1; margin:0; padding:7px; border:0; border-radius:16px; background:#fff; box-shadow:0 5px 14px #6a40100d; }
+    .bento-places .tab-group > [role="tabpanel"], .bento-places .guide-note { grid-column:1 / -1; }
+    .bento-places .guide-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:0; }
+    .bento-places .guide-card { box-shadow:0 6px 17px #5e3b100d; transition:transform .18s ease,box-shadow .18s ease; }
+    .bento-places .guide-card:hover { transform:translateY(-3px); box-shadow:0 12px 24px #5e3b1018; }
+    .bento-places .guide-card:nth-child(1), .bento-places .guide-card:nth-child(5) { grid-column:span 2; }
+    .bento-packing { background:linear-gradient(135deg,#f0fbf8 0%,#fbfffd 50%,#f2f8ff 100%); }
+    .bento-packing::before { right:-100px; bottom:-145px; background:#b8ead9; }
+    .bento-packing #packing { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.9fr); gap:14px; }
+    .bento-packing #packing > h2 { grid-column:1; }
+    .bento-packing #packing > .notice { display:flex; align-items:center; margin:0; border-color:#25a174; border-radius:20px; background:#ddf6eb; color:#15563f; }
+    .bento-packing .packing-grid { grid-column:1 / -1; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .bento-packing .packing-card { box-shadow:0 6px 17px #15563f0d; }
+    .bento-packing .packing-card:nth-child(1), .bento-packing .packing-card:nth-child(4) { grid-column:auto; }
+    .bento-packing #packing > .guide-note { grid-column:1 / -1; margin:0; border:0; border-radius:18px; background:#e6f3ff; }
+    .travel-checks { padding:22px; border:1px solid #dce5ef; border-radius:24px; background:#f7faff; }
+    .travel-checks .info-grid { grid-template-columns:1.1fr .9fr; }
+    .travel-checks .card { border:0; box-shadow:0 6px 16px #102a430c; }
     .packing-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
-    .packing-card { padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 1px 2px #0f172a08; }
+    .packing-card { padding:23px; border:1px solid var(--line); border-radius:17px; background:#fff; box-shadow:0 1px 2px #0f172a08; }
     .packing-card h3 { color:var(--navy); }
     .check-list { margin:10px 0 0; padding:0; list-style:none; }
-    .check-list li { position:relative; padding:9px 0 9px 28px; border-bottom:1px solid #edf2f7; color:#42566d; }
+    .check-list li { position:relative; padding:11px 0 11px 30px; border-bottom:1px solid #e8eef4; color:#384f67; font-size:.95rem; line-height:1.62; }
     .check-list li:last-child { border-bottom:0; }
     .check-list li::before { content:'□'; position:absolute; left:2px; color:var(--blue); font-weight:800; }
-    .guide-card { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 1px 2px #0f172a08; }
+    .guide-card { overflow:hidden; border:1px solid var(--line); border-radius:17px; background:#fff; box-shadow:0 1px 2px #0f172a08; }
     .guide-visual { display:flex; align-items:center; gap:12px; min-height:88px; padding:15px 18px; background:linear-gradient(135deg,#fef3c7,#ffedd5); color:#7c2d12; font-size:2.35rem; }
     .guide-visual.sight { background:linear-gradient(135deg,#dbeafe,#cffafe); color:#075985; }
     .guide-visual small { color:inherit; font-size:.79rem; font-weight:800; line-height:1.35; }
-    .guide-body { padding:16px 18px 18px; }
+    .guide-body { padding:19px 20px 21px; }
     .guide-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
-    .guide-head h3 { color:var(--navy); font-size:1.02rem; }
+    .guide-head h3 { color:var(--navy); font-size:1.08rem; line-height:1.45; }
     .priority { flex:none; padding:3px 7px; border-radius:999px; background:#eff6ff; color:#1d4ed8; font-size:.73rem; font-weight:800; }
-    .guide-type { margin:5px 0 12px; color:var(--muted); font-size:.85rem; }
-    .guide-meta { display:grid; gap:7px; margin:0; }
-    .guide-meta div { display:grid; grid-template-columns:50px 1fr; gap:7px; }
-    .guide-meta dt { color:#64748b; font-size:.79rem; font-weight:800; }
-    .guide-meta dd { margin:0; color:#334155; font-size:.86rem; }
-    .guide-tip { margin:13px 0 0; padding-top:11px; border-top:1px solid #edf1f5; color:#5a4a34; font-size:.85rem; }
-    .map-link { display:inline-block; margin-top:12px; color:#1d4ed8; font-size:.84rem; font-weight:800; text-decoration:none; }
-    .guide-note { margin-top:16px; padding:15px 17px; border:1px dashed #b8c6d6; border-radius:12px; color:#475569; background:#fff; font-size:.9rem; }
+    .guide-type { margin:7px 0 14px; color:#5b6f84; font-size:.9rem; line-height:1.55; }
+    .guide-meta { display:grid; gap:9px; margin:0; }
+    .guide-meta div { display:grid; grid-template-columns:54px 1fr; gap:9px; }
+    .guide-meta dt { color:#52677c; font-size:.83rem; font-weight:800; }
+    .guide-meta dd { margin:0; color:#2f455d; font-size:.91rem; line-height:1.58; }
+    .guide-tip { margin:15px 0 0; padding-top:13px; border-top:1px solid #e8eef4; color:#5a4a34; font-size:.91rem; line-height:1.62; }
+    .map-link { display:inline-flex; align-items:center; min-height:40px; margin-top:14px; padding:8px 11px; border-radius:9px; color:#174ea6; background:#eff6ff; font-size:.88rem; font-weight:800; text-decoration:none; }
+    .guide-note { margin-top:18px; padding:18px 20px; border:1px dashed #aebed0; border-radius:14px; color:#3f5369; background:#fff; font-size:.94rem; line-height:1.68; }
     .callout { margin-top:15px; padding:16px 18px; border-radius:12px; background:#fffbeb; color:#704b08; }
     .footer { margin-top:42px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
     .private { margin-top:10px; color:#7c4a03; font-size:.86rem; }
-    @media (max-width:720px) { .grid,.info-grid,.guide-grid,.packing-grid { grid-template-columns:1fr; } .hero { padding:42px 0 34px; } .day { grid-template-columns:1fr; } .day-label { flex-direction:row; gap:8px; padding:10px; } .day-label small { margin:0; } .item { grid-template-columns:82px 1fr; gap:8px; } }
+
+    /* Clean, reading-first layout */
+    .trip-overview .grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .trip-overview .card,.trip-overview .card:first-child,.trip-overview .card:nth-child(2),.trip-overview .card:nth-child(3) { grid-column:auto; min-height:0; color:var(--ink); border:1px solid var(--line); background:#fff; box-shadow:0 4px 14px #102a4308; }
+    .trip-overview .card:first-child p,.trip-overview .card:first-child strong { color:inherit; }
+    .major-tabs { position:relative; z-index:2; gap:0; margin:0; padding:0; overflow:visible; border:1px solid #cfdbe8; border-radius:15px 15px 0 0; background:#fff; box-shadow:none; }
+    .major-tabs button { position:relative; min-height:76px; border:0; border-right:1px solid #e1e8f0; border-radius:0; background:#f8fafc; box-shadow:none; }
+    .major-tabs button:first-child { border-radius:14px 0 0; }
+    .major-tabs button:last-child { border-radius:0 14px 0 0; }
+    .major-tabs button:last-child { border-right:0; }
+    .major-tabs button:hover { border-color:#e1e8f0; background:#f8fbff; box-shadow:none; transform:none; }
+    .major-tabs button[aria-selected="true"] { z-index:3; color:#174ea6; background:#fff; box-shadow:inset 0 4px 0 #2563eb; }
+    .major-tabs button[aria-selected="true"]::after { content:''; position:absolute; right:0; bottom:-2px; left:0; height:3px; background:#fff; }
+    .major-tabs .tab-icon,.major-tabs button[aria-selected="true"] .tab-icon { width:38px; height:38px; border-radius:10px; background:#f1f5f9; }
+    .major-tabs button[aria-selected="true"] .tab-icon { background:#dbeafe; }
+    .major-tabs button[aria-selected="true"] small { color:#526f91; }
+    .major-panel { margin-top:-1px; padding:clamp(26px,3.5vw,40px); overflow:visible; border:1px solid #cfdbe8; border-radius:0 0 18px 18px; background:#fff; box-shadow:0 8px 24px #102a4309; }
+    .major-panel::before { display:none; }
+    .bento-content,.bento-schedule .bento-content,.bento-places .bento-content,.bento-packing #packing { display:block; }
+    .bento-content > h2 { min-height:0; margin:0 0 10px; padding:0; border-radius:0; background:transparent; box-shadow:none; font-size:clamp(1.55rem,2.5vw,2rem); }
+    .bento-schedule .guide-note,.bento-places .notice,.bento-packing #packing > .notice { display:block; margin:0 0 20px; padding:15px 17px; border:1px solid #d7e5f4; border-left:4px solid #2563eb; border-radius:10px; color:#38516e; background:#f5f9ff; }
+    .bento-schedule .tab-group > .tabs,.bento-places .tab-group > .tabs { margin:0 0 18px; border:1px solid #dce5ef; border-radius:11px; background:#f7f9fc; box-shadow:none; }
+    .bento-schedule .theme-intro { margin:0 0 14px; border:0; border-radius:11px; background:#f1f7f6; box-shadow:none; }
+    .bento-schedule .schedule { grid-template-columns:1fr; gap:13px; }
+    .bento-schedule .day:first-child { grid-column:auto; }
+    .bento-schedule .day,.bento-schedule .day:first-child { box-shadow:none; }
+    .bento-schedule .day:first-child .day-label { background:var(--navy); }
+    .bento-places .guide-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
+    .bento-places .guide-card,.bento-places .guide-card:hover { grid-column:auto; box-shadow:none; transform:none; }
+    .bento-places .guide-note { margin:18px 0 0; }
+    .bento-packing .packing-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
+    .bento-packing .packing-card { grid-column:auto; box-shadow:none; }
+    .bento-packing #packing > .guide-note { margin-top:18px; border:1px solid #d7e5f4; border-radius:11px; background:#f5f9ff; }
+    .guide-card,.packing-card { border-color:#d7e0e9; }
+    .guide-visual,.guide-visual.sight { min-height:68px; padding:12px 18px; background:#f4f7fa; color:#294766; font-size:1.9rem; }
+    .travel-checks { padding:0; border:0; border-radius:0; background:transparent; }
+    .travel-checks .info-grid { grid-template-columns:1fr 1fr; }
+    .travel-checks .card { border:1px solid var(--line); box-shadow:0 4px 14px #102a4308; }
+    @media (max-width:980px) { .trip-overview .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .bento-schedule .bento-content,.bento-places .bento-content,.bento-packing #packing { grid-template-columns:1fr; } .bento-schedule .schedule { grid-template-columns:1fr; } .bento-schedule .day:first-child { grid-column:auto; } .bento-places .guide-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .bento-content > h2,.bento-schedule .bento-content > h2,.bento-places .bento-content > h2,.bento-packing #packing > h2 { grid-column:1 / -1; } }
+    @media (max-width:720px) { .grid,.info-grid,.guide-grid,.packing-grid,.major-tabs,.trip-overview .grid,.bento-schedule .bento-content,.bento-places .bento-content,.bento-packing #packing,.bento-schedule .schedule,.bento-places .guide-grid,.bento-packing .packing-grid,.travel-checks .info-grid { grid-template-columns:1fr; } .major-tabs { gap:7px; padding:8px; } .major-tabs button { min-height:66px; padding:11px 13px; } .major-tabs small { display:none; } .major-panel { padding:14px; border-radius:22px; } .bento-content > h2 { min-height:92px; padding:20px; } .trip-overview .card:first-child,.bento-schedule .day:first-child,.bento-places .guide-card:nth-child(1),.bento-places .guide-card:nth-child(5),.bento-packing .packing-card:nth-child(1),.bento-packing .packing-card:nth-child(4) { grid-column:auto; } .travel-checks { padding:14px; border-radius:18px; } .hero { padding:42px 0 34px; } .day { grid-template-columns:1fr; } .day-label { flex-direction:row; gap:8px; padding:10px; } .day-label small { margin:0; } .item { grid-template-columns:82px 1fr; gap:8px; } }
+    @media (max-width:720px) { .wrap { width:min(100% - 24px,1160px); } .major-tabs { gap:0; padding:0; } .major-tabs button,.major-tabs button:first-child,.major-tabs button:last-child { border-right:0; border-bottom:1px solid #e1e8f0; border-radius:0; } .major-tabs button:first-child { border-radius:14px 14px 0 0; } .major-tabs button:last-child { border-bottom:0; } .major-tabs button[aria-selected="true"] { box-shadow:inset 4px 0 0 #2563eb; } .major-tabs button[aria-selected="true"]::after { display:none; } .major-panel { margin-top:-1px; padding:22px 16px; border-radius:0 0 15px 15px; } .bento-content > h2 { min-height:0; padding:0; } .travel-checks { padding:0; border-radius:0; } }
     @media print { body { background:#fff; font-size:11px; } .hero { padding:20px 0; } main { padding:10px 0; } section { margin-top:20px; } .tabs { display:none; } .theme:not(.active) { display:none!important; } .day { break-inside:avoid; } }
   </style>
 </head>
@@ -95,7 +195,7 @@
   <main class="wrap">
     <p class="notice"><strong>일정은 확정안이 아닌 예시안입니다.</strong> 항공·숙소는 확정됐지만, 아래 일정·맛집·관광지는 여행 당일 컨디션·날씨·영업 상황에 맞춰 골라 진행해요.</p>
 
-    <section>
+    <section class="trip-overview">
       <h2>한눈에 보기</h2>
       <div class="grid">
         <article class="card"><span class="icon">✈️</span><h3>가는 편</h3><p><strong>11/01 (일) ZE0647</strong><br>인천 12:40 → 후쿠오카 14:00<br>전원 5명 함께 출발</p></article>
@@ -106,13 +206,13 @@
 
     <section class="major-tab-group">
       <div class="tabs major-tabs" role="tablist" aria-label="여행 안내 큰 탭">
-        <button role="tab" aria-selected="true" aria-controls="major-schedule" id="tab-major-schedule">📅 일정 선택하기</button>
-        <button role="tab" aria-selected="false" aria-controls="major-places" id="tab-major-places">📍 장소 레퍼런스</button>
-        <button role="tab" aria-selected="false" aria-controls="major-packing" id="tab-major-packing">🎒 준비물</button>
+        <button role="tab" aria-selected="true" aria-controls="major-schedule" id="tab-major-schedule"><span class="tab-icon">📅</span><span class="tab-label"><strong>일정 선택하기</strong><small>테마별 예시 동선 비교</small></span></button>
+        <button role="tab" aria-selected="false" aria-controls="major-places" id="tab-major-places"><span class="tab-icon">📍</span><span class="tab-label"><strong>장소 레퍼런스</strong><small>맛집 · 명소 후보 살펴보기</small></span></button>
+        <button role="tab" aria-selected="false" aria-controls="major-packing" id="tab-major-packing"><span class="tab-icon">🎒</span><span class="tab-label"><strong>준비물</strong><small>출발 전 가족 체크리스트</small></span></button>
       </div>
 
-      <div id="major-schedule" role="tabpanel" aria-labelledby="tab-major-schedule">
-    <section id="schedule" class="tab-group">
+      <div id="major-schedule" class="major-panel bento-schedule" role="tabpanel" aria-labelledby="tab-major-schedule">
+    <section id="schedule" class="tab-group bento-content">
       <h2>일정 선택하기</h2>
       <p class="guide-note"><strong>확정 전 참고용 예시안입니다.</strong> 아래 테마별 동선은 모두를 진행하는 일정표가 아니라, 여행 전 가족의 취향·아이 컨디션·날씨에 맞춰 후보를 비교하고 선택하기 위한 레퍼런스예요.</p>
       <div class="tabs" role="tablist" aria-label="여행 테마">
@@ -170,8 +270,8 @@
     </section>
       </div>
 
-      <div id="major-places" role="tabpanel" aria-labelledby="tab-major-places" hidden>
-    <section id="places" class="tab-group">
+      <div id="major-places" class="major-panel bento-places" role="tabpanel" aria-labelledby="tab-major-places" hidden>
+    <section id="places" class="tab-group bento-content">
       <h2>맛집 & 주요 명소 레퍼런스</h2>
       <p class="notice"><strong>전부 방문할 목록이 아닙니다.</strong> 나카스 숙소·5인 가족 기준의 후보 모음이에요. 지도 버튼에서 실제 사진·리뷰·현재 영업 정보를 확인하고, 당일 동선에 맞는 곳만 골라주세요.</p>
       <div class="tabs" role="tablist" aria-label="장소 가이드">
@@ -207,8 +307,8 @@
     </section>
       </div>
 
-      <div id="major-packing" role="tabpanel" aria-labelledby="tab-major-packing" hidden>
-        <section id="packing">
+      <div id="major-packing" class="major-panel bento-packing" role="tabpanel" aria-labelledby="tab-major-packing" hidden>
+        <section id="packing" class="bento-content">
           <h2>일본 여행 준비물</h2>
           <p class="notice"><strong>출발 1주 전과 출발 당일에 나눠 확인하세요.</strong> 여권·항공·숙소와 입국 절차는 가족 각자 확인하고, 아이 물품과 상비약은 기내 반입용으로 따로 챙기는 편이 안전합니다.</p>
           <div class="packing-grid">
@@ -222,7 +322,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="travel-checks">
       <h2>예약 & 체크 포인트</h2>
       <div class="info-grid">
         <article class="card"><h3>🏨 숙소</h3><ul class="facts"><li><b>객실</b>2개 · 3박</li><li><b>조식</b>불포함</li><li><b>결제</b>현장 카드 결제</li><li><b>취소</b>10/28(수) 23:59까지 무료</li></ul></article>
