@@ -8,8 +8,8 @@
   <style>
     :root { --navy:#102a43; --blue:#2563eb; --sky:#eff6ff; --ink:#1f2937; --muted:#64748b; --line:#dce5ef; --card:#fff; --green:#157f4a; --amber:#a16207; }
     * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:#f4f7fb; color:var(--ink); font:16px/1.68 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; word-break:keep-all; overflow-wrap:anywhere; }
+    html { scroll-behavior:smooth; scrollbar-gutter:stable; }
+    body { margin:0; overflow-y:scroll; background:#f4f7fb; color:var(--ink); font:16px/1.68 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; word-break:keep-all; overflow-wrap:anywhere; }
     .wrap { width:min(1160px,calc(100% - 40px)); margin:auto; }
     .hero { color:#fff; background:linear-gradient(135deg,#0f3152 0%,#0d5c87 57%,#0e7490 100%); padding:56px 0 44px; }
     .eyebrow { margin:0 0 8px; color:#bce7ff; font-size:.9rem; font-weight:750; letter-spacing:.08em; }
@@ -178,12 +178,13 @@
     .travel-checks .info-grid { grid-template-columns:1fr 1fr; }
     .travel-checks .card { border:1px solid var(--line); box-shadow:0 4px 14px #102a4308; }
     button:hover { transform:none; }
-    .bento-places .guide-grid { align-items:stretch; }
-    .bento-places .guide-card:hover { transform:none; box-shadow:none; }
+    .bento-places .guide-grid { display:flex; flex-wrap:wrap; align-items:flex-start; gap:15px; }
+    .bento-places .guide-card,.bento-places .guide-card:hover { position:relative; top:0; flex:0 0 calc((100% - 15px) / 2); width:calc((100% - 15px) / 2); margin:0; transform:none!important; animation:none!important; box-shadow:none; contain:none; }
+    .bento-places .guide-card * { transition:none!important; }
     @media (max-width:980px) { .trip-overview .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .bento-schedule .bento-content,.bento-places .bento-content,.bento-packing #packing { grid-template-columns:1fr; } .bento-schedule .schedule { grid-template-columns:1fr; } .bento-schedule .day:first-child { grid-column:auto; } .bento-places .guide-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .bento-content > h2,.bento-schedule .bento-content > h2,.bento-places .bento-content > h2,.bento-packing #packing > h2 { grid-column:1 / -1; } }
     @media (max-width:720px) { .grid,.info-grid,.guide-grid,.packing-grid,.major-tabs,.trip-overview .grid,.bento-schedule .bento-content,.bento-places .bento-content,.bento-packing #packing,.bento-schedule .schedule,.bento-places .guide-grid,.bento-packing .packing-grid,.travel-checks .info-grid { grid-template-columns:1fr; } .major-tabs { gap:7px; padding:8px; } .major-tabs button { min-height:66px; padding:11px 13px; } .major-tabs small { display:none; } .major-panel { padding:14px; border-radius:22px; } .bento-content > h2 { min-height:92px; padding:20px; } .trip-overview .card:first-child,.bento-schedule .day:first-child,.bento-places .guide-card:nth-child(1),.bento-places .guide-card:nth-child(5),.bento-packing .packing-card:nth-child(1),.bento-packing .packing-card:nth-child(4) { grid-column:auto; } .travel-checks { padding:14px; border-radius:18px; } .hero { padding:42px 0 34px; } .day { grid-template-columns:1fr; } .day-label { flex-direction:row; gap:8px; padding:10px; } .day-label small { margin:0; } .item { grid-template-columns:82px 1fr; gap:8px; } }
     @media (max-width:720px) { .wrap { width:min(100% - 24px,1160px); } .major-tabs { gap:0; padding:0; } .major-tabs button,.major-tabs button:first-child,.major-tabs button:last-child { border-right:0; border-bottom:1px solid #e1e8f0; border-radius:0; } .major-tabs button:first-child { border-radius:14px 14px 0 0; } .major-tabs button:last-child { border-bottom:0; } .major-tabs button[aria-selected="true"] { box-shadow:inset 4px 0 0 #2563eb; } .major-tabs button[aria-selected="true"]::after { display:none; } .major-panel { margin-top:-1px; padding:22px 16px; border-radius:0 0 15px 15px; } .bento-content > h2 { min-height:0; padding:0; } .travel-checks { padding:0; border-radius:0; } }
-    @media (max-width:720px) { .major-tabs,.tab-group > .tabs { display:none; } .major-panel,.major-panel[hidden] { display:block!important; margin-top:18px; border-radius:15px; } .major-tabs + .major-panel { margin-top:0; } .tab-group > [role="tabpanel"],.tab-group > [role="tabpanel"][hidden] { display:block!important; margin-top:26px; } .tab-group > [role="tabpanel"] + [role="tabpanel"] { padding-top:26px; border-top:1px solid #e1e8f0; } .theme-intro { margin-bottom:14px; } }
+    @media (max-width:720px) { .major-tabs,.tab-group > .tabs { display:none; } .major-panel,.major-panel[hidden] { display:block!important; margin-top:18px; border-radius:15px; } .major-tabs + .major-panel { margin-top:0; } .tab-group > [role="tabpanel"],.tab-group > [role="tabpanel"][hidden] { display:block!important; margin-top:26px; } .tab-group > [role="tabpanel"] + [role="tabpanel"] { padding-top:26px; border-top:1px solid #e1e8f0; } .bento-places .guide-grid { display:block; } .bento-places .guide-card,.bento-places .guide-card:hover { width:100%; } .bento-places .guide-card + .guide-card { margin-top:15px; } .theme-intro { margin-bottom:14px; } }
     @media print { body { background:#fff; font-size:11px; } .hero { padding:20px 0; } main { padding:10px 0; } section { margin-top:20px; } .tabs { display:none; } .theme:not(.active) { display:none!important; } .day { break-inside:avoid; } }
   </style>
 </head>
