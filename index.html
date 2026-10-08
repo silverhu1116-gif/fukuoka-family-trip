@@ -49,10 +49,27 @@
     .facts li { padding:9px 0; border-bottom:1px solid #edf1f5; }
     .facts li:last-child { border:0; }
     .facts b { display:inline-block; min-width:86px; color:#47617a; font-size:.9rem; }
+    .guide-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+    .guide-card { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 1px 2px #0f172a08; }
+    .guide-visual { display:flex; align-items:center; gap:12px; min-height:88px; padding:15px 18px; background:linear-gradient(135deg,#fef3c7,#ffedd5); color:#7c2d12; font-size:2.35rem; }
+    .guide-visual.sight { background:linear-gradient(135deg,#dbeafe,#cffafe); color:#075985; }
+    .guide-visual small { color:inherit; font-size:.79rem; font-weight:800; line-height:1.35; }
+    .guide-body { padding:16px 18px 18px; }
+    .guide-head { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+    .guide-head h3 { color:var(--navy); font-size:1.02rem; }
+    .priority { flex:none; padding:3px 7px; border-radius:999px; background:#eff6ff; color:#1d4ed8; font-size:.73rem; font-weight:800; }
+    .guide-type { margin:5px 0 12px; color:var(--muted); font-size:.85rem; }
+    .guide-meta { display:grid; gap:7px; margin:0; }
+    .guide-meta div { display:grid; grid-template-columns:50px 1fr; gap:7px; }
+    .guide-meta dt { color:#64748b; font-size:.79rem; font-weight:800; }
+    .guide-meta dd { margin:0; color:#334155; font-size:.86rem; }
+    .guide-tip { margin:13px 0 0; padding-top:11px; border-top:1px solid #edf1f5; color:#5a4a34; font-size:.85rem; }
+    .map-link { display:inline-block; margin-top:12px; color:#1d4ed8; font-size:.84rem; font-weight:800; text-decoration:none; }
+    .guide-note { margin-top:16px; padding:15px 17px; border:1px dashed #b8c6d6; border-radius:12px; color:#475569; background:#fff; font-size:.9rem; }
     .callout { margin-top:15px; padding:16px 18px; border-radius:12px; background:#fffbeb; color:#704b08; }
     .footer { margin-top:42px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.88rem; }
     .private { margin-top:10px; color:#7c4a03; font-size:.86rem; }
-    @media (max-width:720px) { .grid,.info-grid { grid-template-columns:1fr; } .hero { padding:42px 0 34px; } .day { grid-template-columns:1fr; } .day-label { flex-direction:row; gap:8px; padding:10px; } .day-label small { margin:0; } .item { grid-template-columns:82px 1fr; gap:8px; } }
+    @media (max-width:720px) { .grid,.info-grid,.guide-grid { grid-template-columns:1fr; } .hero { padding:42px 0 34px; } .day { grid-template-columns:1fr; } .day-label { flex-direction:row; gap:8px; padding:10px; } .day-label small { margin:0; } .item { grid-template-columns:82px 1fr; gap:8px; } }
     @media print { body { background:#fff; font-size:11px; } .hero { padding:20px 0; } main { padding:10px 0; } section { margin-top:20px; } .tabs { display:none; } .theme:not(.active) { display:none!important; } .day { break-inside:avoid; } }
   </style>
 </head>
@@ -66,7 +83,7 @@
     </div>
   </header>
   <main class="wrap">
-    <p class="notice">아래 세 가지 중 여행 당일 컨디션·날씨에 맞는 일정 하나를 골라 진행해요. 항공·숙소는 모두 확정된 상태입니다.</p>
+    <p class="notice"><strong>일정은 확정안이 아닌 예시안입니다.</strong> 항공·숙소는 확정됐지만, 아래 일정·맛집·관광지는 여행 당일 컨디션·날씨·영업 상황에 맞춰 골라 진행해요.</p>
 
     <section>
       <h2>한눈에 보기</h2>
@@ -77,8 +94,9 @@
       </div>
     </section>
 
-    <section id="schedule">
+    <section id="schedule" class="tab-group">
       <h2>일정 선택하기</h2>
+      <p class="guide-note"><strong>확정 전 참고용 예시안입니다.</strong> 아래 테마별 동선은 모두를 진행하는 일정표가 아니라, 여행 전 가족의 취향·아이 컨디션·날씨에 맞춰 후보를 비교하고 선택하기 위한 레퍼런스예요.</p>
       <div class="tabs" role="tablist" aria-label="여행 테마">
         <button role="tab" aria-selected="true" aria-controls="kids" id="tab-kids">👶 아이와 함께</button>
         <button role="tab" aria-selected="false" aria-controls="adult" id="tab-adult">♨️ 어른 힐링·미식</button>
@@ -133,6 +151,41 @@
       </div>
     </section>
 
+    <section id="places" class="tab-group">
+      <h2>맛집 & 주요 명소 레퍼런스</h2>
+      <p class="notice"><strong>전부 방문할 목록이 아닙니다.</strong> 나카스 숙소·5인 가족 기준의 후보 모음이에요. 지도 버튼에서 실제 사진·리뷰·현재 영업 정보를 확인하고, 당일 동선에 맞는 곳만 골라주세요.</p>
+      <div class="tabs" role="tablist" aria-label="장소 가이드">
+        <button role="tab" aria-selected="true" aria-controls="food-guide" id="tab-food-guide">🍜 맛집 가이드</button>
+        <button role="tab" aria-selected="false" aria-controls="sight-guide" id="tab-sight-guide">🗺️ 명소 가이드</button>
+      </div>
+      <div id="food-guide" role="tabpanel" aria-labelledby="tab-food-guide">
+        <div class="guide-grid">
+          <article class="guide-card"><div class="guide-visual">🍲<small>사진 포인트<br>산더미 부추 전골</small></div><div class="guide-body"><div class="guide-head"><h3>원조 하카타 모츠나베 라쿠텐치</h3><span class="priority">필수</span></div><p class="guide-type">모츠나베 · 어른 선호, 아이는 면·국물 위주</p><dl class="guide-meta"><div><dt>위치</dt><dd>나카스 / 텐진</dd></div><div><dt>가격</dt><dd>1인 ¥2,500–¥3,500</dd></div><div><dt>특징</dt><dd>진한 간장 육수, 짬뽕면 사리, 푸짐한 부추 비주얼</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 구글맵 예약을 먼저 확인. 숙소에서 도보 약 5분인 지점을 우선 비교.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=원조+하카타+모츠나베+라쿠텐치">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🍱<small>사진 포인트<br>윤기 나는 장어덮밥</small></div><div class="guide-body"><div class="guide-head"><h3>요시즈카 우나기야</h3><span class="priority">필수</span></div><p class="guide-type">우나쥬 · 부모님 포함 가족 식사</p><dl class="guide-meta"><div><dt>위치</dt><dd>나카스 강변 · 숙소 도보 약 8분</dd></div><div><dt>가격</dt><dd>1인 ¥3,500–¥5,500</dd></div><div><dt>특징</dt><dd>150년 전통, 특제 타레와 바삭·촉촉한 장어구이</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 예약 불가. 점심·저녁 피크에는 오픈 30분 전 번호표를 노려요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=요시즈카+우나기야+후쿠오카">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🍜<small>사진 포인트<br>나카스 본점 외관</small></div><div class="guide-body"><div class="guide-head"><h3>이치란 라멘 본사총본점</h3><span class="priority">필수</span></div><p class="guide-type">돈코츠 라멘 · 빠르고 가벼운 한 끼</p><dl class="guide-meta"><div><dt>위치</dt><dd>나카스 · 숙소 도보 약 3분</dd></div><div><dt>가격</dt><dd>1인 ¥1,200–¥1,800</dd></div><div><dt>특징</dt><dd>맵기·기름기 등 취향 주문, 본사 특유의 분위기</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 1층 다인 테이블석을 확인하면 5명이 함께 앉기 편해요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=이치란+라멘+본사총본점+후쿠오카">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🥩<small>사진 포인트<br>스톤 위 함바그</small></div><div class="guide-body"><div class="guide-head"><h3>키와미야 함바그 하카타점</h3><span class="priority">추천</span></div><p class="guide-type">철판 흑모와규 함바그 · 아이 동반</p><dl class="guide-meta"><div><dt>위치</dt><dd>하카타역 버스터미널 1층</dd></div><div><dt>가격</dt><dd>1인 ¥1,800–¥2,800</dd></div><div><dt>특징</dt><dd>개인 스톤에 직접 굽는 와규, 세트 구성 풍성</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 대기 40–60분 가능. 11시 오픈런이 좋고 뜨거운 스톤은 아이와 거리 두기.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=키와미야+함바그+하카타점">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🍜<small>사진 포인트<br>맑은 돈코츠와 볶음밥</small></div><div class="guide-body"><div class="guide-head"><h3>하카타 라멘 신신</h3><span class="priority">필수</span></div><p class="guide-type">돈코츠 라멘 & 차항 · 아이도 무난</p><dl class="guide-meta"><div><dt>위치</dt><dd>텐진 본점 / 하카타 데이토스</dd></div><div><dt>가격</dt><dd>1인 ¥1,000–¥1,600</dd></div><div><dt>특징</dt><dd>잡내 적은 국물, 얇은 면발, 불맛 볶음밥</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 돈코츠가 부담스러운 일행이 있어도 볶음밥·한입교자로 조합하기 좋아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=하카타+라멘+신신+후쿠오카">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🔥<small>사진 포인트<br>흑모와규 모둠구이</small></div><div class="guide-body"><div class="guide-head"><h3>야키니쿠 니쿠이치 하카타점</h3><span class="priority">필수</span></div><p class="guide-type">흑모와규 야키니쿠 · 가족 만찬</p><dl class="guide-meta"><div><dt>위치</dt><dd>하카타역 치쿠시구치 도보 약 7분</dd></div><div><dt>가격</dt><dd>1인 ¥4,500–¥6,500</dd></div><div><dt>특징</dt><dd>특선 7종 모둠, 냉면과 태블릿 한국어 주문</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 인기 시간대는 한 달 전부터 구글맵 예약을 확인해요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=야키니쿠+니쿠이치+하카타점">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🍗<small>사진 포인트<br>맑은 닭 육수 나베</small></div><div class="guide-body"><div class="guide-head"><h3>하카타 미즈타키 토리덴 본점</h3><span class="priority">추천</span></div><p class="guide-type">닭한마리 백탕 나베 · 부모님·아이</p><dl class="guide-meta"><div><dt>위치</dt><dd>나카스카와바타 · 숙소 도보 약 4분</dd></div><div><dt>가격</dt><dd>1인 ¥4,500–¥7,000</dd></div><div><dt>특징</dt><dd>진하고 담백한 규슈산 닭 육수, 프라이빗 룸</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 자극적이지 않은 코스라 가족 모두의 컨디션이 떨어진 날 후보로 좋아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=하카타+미즈타키+토리덴+본점">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual">🥐<small>사진 포인트<br>갓 구운 미니 크루아상</small></div><div class="guide-body"><div class="guide-head"><h3>우동 타이라 · 미뇽</h3><span class="priority">간식</span></div><p class="guide-type">가벼운 점심 & 이동 간식</p><dl class="guide-meta"><div><dt>위치</dt><dd>스미요시 / 하카타역 중앙 개찰구</dd></div><div><dt>가격</dt><dd>우동 ¥700–¥1,200 · 빵 ¥300–¥800</dd></div><div><dt>특징</dt><dd>고보텐 우동, 플레인·초코·고구마 미니 크루아상</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 우동은 11:15–15:00 중심의 점심 한정. 미뇽은 줄이 길어도 회전이 빨라요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=우동+타이라+후쿠오카">우동 지도 보기 ↗</a></div></article>
+        </div>
+      </div>
+      <div id="sight-guide" role="tabpanel" aria-labelledby="tab-sight-guide" hidden>
+        <div class="guide-grid">
+          <article class="guide-card"><div class="guide-visual sight">🎈<small>사진 포인트<br>캐릭터 공연·빵공장</small></div><div class="guide-body"><div class="guide-head"><h3>후쿠오카 호빵맨 어린이 박물관</h3><span class="priority">필수</span></div><p class="guide-type">실내 키즈 테마파크 · 유아 동반</p><dl class="guide-meta"><div><dt>위치</dt><dd>나카스, 하카타리버레인 5–6층 · 숙소 도보 3분</dd></div><div><dt>가격</dt><dd>1인 ¥2,000–¥2,200 (1세 이상)</dd></div><div><dt>특징</dt><dd>라이브 공연, 베이커리, 미끄럼틀과 실내 놀이</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 재입장 스탬프 여부와 당일 공연 시간을 먼저 확인하면 좋아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=후쿠오카+호빵맨+어린이+박물관">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">🐬<small>사진 포인트<br>하카타만 돌고래 쇼</small></div><div class="guide-body"><div class="guide-head"><h3>마린월드 우미노나카미치</h3><span class="priority">필수</span></div><p class="guide-type">대형 해양 수족관 · 전가족</p><dl class="guide-meta"><div><dt>위치</dt><dd>우미노나카미치</dd></div><div><dt>가격</dt><dd>대인 ¥2,500 / 소인 ¥1,200</dd></div><div><dt>특징</dt><dd>350종 대형 수조, 돌고래·바다사자 쇼</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 하카타 부두에서 페리 약 20분을 타면 이동 자체도 아이 체험이 돼요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=마린월드+우미노나카미치">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">🤖<small>사진 포인트<br>24.8m 실물 뉴건담</small></div><div class="guide-body"><div class="guide-head"><h3>라라포트 후쿠오카</h3><span class="priority">필수</span></div><p class="guide-type">복합 쇼핑몰 & 건담 · 우천 플랜</p><dl class="guide-meta"><div><dt>위치</dt><dd>하카타구 나카 · 하카타역 직행버스 약 20분</dd></div><div><dt>가격</dt><dd>입장 무료 · 쇼핑/체험 별도</dd></div><div><dt>특징</dt><dd>건담 모션 연출, 키자니아, 장난감미술관, 푸드코트</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 건담 연출은 매시 정시 기준으로 확인. 수유실·유아 휴게시설이 강점이에요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=라라포트+후쿠오카">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">🦢<small>사진 포인트<br>호수·보트·공원뷰</small></div><div class="guide-body"><div class="guide-head"><h3>오호리 공원 & 일본정원</h3><span class="priority">추천</span></div><p class="guide-type">도심 호수 산책 · 유모차·부모님 동반</p><dl class="guide-meta"><div><dt>위치</dt><dd>츄오구 오호리 · 역에서 도보 1분</dd></div><div><dt>가격</dt><dd>공원 무료 / 일본정원 ¥250</dd></div><div><dt>특징</dt><dd>2km 호수길, 백조 보트, 스타벅스 공원뷰</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 평지라 속도를 조절하기 좋고, 아이는 보트 체험을 좋아할 가능성이 높아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=오호리+공원+후쿠오카">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">⛲<small>사진 포인트<br>운하형 몰과 분수쇼</small></div><div class="guide-body"><div class="guide-head"><h3>캐널시티 하카타</h3><span class="priority">필수</span></div><p class="guide-type">복합 문화 쇼핑몰 · 저녁 동선</p><dl class="guide-meta"><div><dt>위치</dt><dd>하카타구 스미요시 · 숙소 도보 약 10분</dd></div><div><dt>가격</dt><dd>입장 무료 · 쇼핑 별도</dd></div><div><dt>특징</dt><dd>음악 분수쇼, 야간 3D 맵핑, 캐릭터 숍</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 분수쇼 시간은 당일 확인. 비가 오면 카와바타 상점가와 묶어 이동하기 좋아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=캐널시티+하카타">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">⛩️<small>사진 포인트<br>붉은 다리·참배길</small></div><div class="guide-body"><div class="guide-head"><h3>다자이후 텐만구</h3><span class="priority">필수</span></div><p class="guide-type">역사 신사 & 전통거리 · 반나절 코스</p><dl class="guide-meta"><div><dt>위치</dt><dd>다자이후시 · 하카타역 직행버스 약 40분</dd></div><div><dt>가격</dt><dd>입장 무료 · 교통비 별도</dd></div><div><dt>특징</dt><dd>천년 신사, 소 동상, 우메가에모치 거리</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 타비토 직행버스 여부를 확인하고, 유모차도 동선상 큰 무리는 적은 편이에요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=다자이후+텐만구">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">♨️<small>사진 포인트<br>숲속 노천탕·가족탕</small></div><div class="guide-body"><div class="guide-head"><h3>나카가와 세이류 온천</h3><span class="priority">추천</span></div><p class="guide-type">천연 온천 · 어른 힐링/가족탕</p><dl class="guide-meta"><div><dt>위치</dt><dd>나카가와시 · 오하시역 등 셔틀 확인</dd></div><div><dt>가격</dt><dd>대인 ¥1,400 · 가족탕 별도</dd></div><div><dt>특징</dt><dd>노천 폭포탕, 사우나, 개별 프라이빗 가족탕</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 5인이라면 가족탕을 미리 예약하고 셔틀 시간표를 맞추는 편이 좋아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=나카가와+세이류+온천">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">🌇<small>사진 포인트<br>일몰·야경과 모모치 해변</small></div><div class="guide-body"><div class="guide-head"><h3>후쿠오카 타워 & 모모치 해변</h3><span class="priority">추천</span></div><p class="guide-type">전망대 · 일몰/야경</p><dl class="guide-meta"><div><dt>위치</dt><dd>사와라구 모모치 · 텐진/하카타 버스 약 25분</dd></div><div><dt>가격</dt><dd>대인 ¥800 / 소인 ¥500</dd></div><div><dt>특징</dt><dd>234m 전망, 마리존과 해변 포토 스팟</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 일몰 30분 전 도착하면 석양과 야경을 함께 볼 수 있어요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=후쿠오카+타워">지도·사진 보기 ↗</a></div></article>
+          <article class="guide-card"><div class="guide-visual sight">✨<small>사진 포인트<br>빛의 공과 디지털 숲</small></div><div class="guide-body"><div class="guide-head"><h3>팀랩 포레스트 후쿠오카</h3><span class="priority">추천</span></div><p class="guide-type">인터랙티브 미디어아트 · 우천 코스</p><dl class="guide-meta"><div><dt>위치</dt><dd>PayPay 돔 인근 BOSS E·ZO</dd></div><div><dt>가격</dt><dd>대인 ¥2,200 / 소인 ¥800</dd></div><div><dt>특징</dt><dd>스마트폰 연동 체험, 뛰고 만지는 디지털 숲</dd></div></dl><p class="guide-tip"><b>방문 팁</b> 아이가 직접 움직이는 체험 위주라 비·추위가 있는 날의 대안으로 좋아요.</p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=팀랩+포레스트+후쿠오카">지도·사진 보기 ↗</a></div></article>
+        </div>
+      </div>
+      <p class="guide-note"><strong>추가 후보:</strong> 멘타이쥬(명란덮밥), 텐푸라 히라오, 모토무라 규카츠, 스시잔마이, 쿠시다 신사, 카와바타 도리 상점가, 텐진 지하상가, 나카스 야타이도 일정·식사 상황에 따라 비교해볼 만합니다. 가격·휴무일·예약·공연 시간은 변동될 수 있으니 지도 버튼의 최신 정보로 최종 확인해주세요.</p>
+    </section>
+
     <section>
       <h2>예약 & 체크 포인트</h2>
       <div class="info-grid">
@@ -143,15 +196,23 @@
       <p class="private">개인정보 보호를 위해 이 페이지에는 예약번호, 발권번호, 여권 영문명, 호텔 PIN, 상세 연락처를 넣지 않았습니다.</p>
     </section>
 
-    <footer class="footer">최종 업데이트: 2026년 10월 · 원본 여행 스프레드시트를 바탕으로 만든 가족 공유용 요약본</footer>
+    <footer class="footer">최종 업데이트: 2026년 10월 · 원본 여행 스프레드시트의 일정·맛집·명소 정보를 바탕으로 만든 가족 공유용 예시안</footer>
   </main>
   <script>
-    const tabs = document.querySelectorAll('[role="tab"]');
-    const panels = document.querySelectorAll('[role="tabpanel"]');
-    tabs.forEach(tab => tab.addEventListener('click', () => {
-      tabs.forEach(t => t.setAttribute('aria-selected', String(t === tab)));
-      panels.forEach(panel => { const active = panel.id === tab.getAttribute('aria-controls'); panel.hidden = !active; panel.classList.toggle('active', active); });
-    }));
+    document.querySelectorAll('.guide-visual small').forEach(label => {
+      if (label.firstChild?.nodeValue?.includes('사진 포인트')) {
+        label.firstChild.remove();
+        label.querySelector('br')?.remove();
+      }
+    });
+    document.querySelectorAll('.tab-group').forEach(group => {
+      const tabs = group.querySelectorAll('[role="tab"]');
+      const panels = group.querySelectorAll('[role="tabpanel"]');
+      tabs.forEach(tab => tab.addEventListener('click', () => {
+        tabs.forEach(t => t.setAttribute('aria-selected', String(t === tab)));
+        panels.forEach(panel => { const active = panel.id === tab.getAttribute('aria-controls'); panel.hidden = !active; panel.classList.toggle('active', active); });
+      }));
+    });
   </script>
 </body>
 </html>
