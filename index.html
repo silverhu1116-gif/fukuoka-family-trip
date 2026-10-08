@@ -35,8 +35,8 @@
     .card p { margin:9px 0 0; color:#52677c; font-size:.96rem; line-height:1.68; }
     .card strong { color:var(--ink); }
     .tabs { display:flex; gap:8px; overflow-x:auto; padding-bottom:5px; }
-    button { appearance:none; cursor:pointer; border:1px solid var(--line); border-radius:12px; padding:11px 15px; color:#38516e; background:#fff; font:inherit; font-weight:750; white-space:nowrap; transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease; }
-    button:hover { border-color:#7aa4ec; box-shadow:0 4px 12px #2563eb18; transform:translateY(-1px); }
+    button { appearance:none; cursor:pointer; border:1px solid var(--line); border-radius:12px; padding:11px 15px; color:#38516e; background:#fff; font:inherit; font-weight:750; white-space:nowrap; transition:border-color .16s ease,background .16s ease; }
+    button:hover { border-color:#7aa4ec; background:#f8fbff; box-shadow:none; transform:none; }
     button:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }
     button[aria-selected="true"] { border-color:var(--blue); background:var(--blue); color:#fff; box-shadow:0 5px 12px #2563eb30; }
     .tab-group > .tabs { gap:7px; margin:14px 0 4px; padding:5px; border:1px solid #dce5ef; border-radius:13px; background:#f8fafc; }
@@ -98,8 +98,8 @@
     .bento-places .tab-group > .tabs { grid-column:1 / -1; margin:0; padding:7px; border:0; border-radius:16px; background:#fff; box-shadow:0 5px 14px #6a40100d; }
     .bento-places .tab-group > [role="tabpanel"], .bento-places .guide-note { grid-column:1 / -1; }
     .bento-places .guide-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:0; }
-    .bento-places .guide-card { box-shadow:0 6px 17px #5e3b100d; transition:transform .18s ease,box-shadow .18s ease; }
-    .bento-places .guide-card:hover { transform:translateY(-3px); box-shadow:0 12px 24px #5e3b1018; }
+    .bento-places .guide-card { box-shadow:0 6px 17px #5e3b100d; transition:none; }
+    .bento-places .guide-card:hover { transform:none; box-shadow:0 6px 17px #5e3b100d; }
     .bento-places .guide-card:nth-child(1), .bento-places .guide-card:nth-child(5) { grid-column:span 2; }
     .bento-packing { background:linear-gradient(135deg,#f0fbf8 0%,#fbfffd 50%,#f2f8ff 100%); }
     .bento-packing::before { right:-100px; bottom:-145px; background:#b8ead9; }
@@ -172,7 +172,7 @@
     .bento-packing .packing-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
     .bento-packing .packing-card { grid-column:auto; box-shadow:none; }
     .bento-packing #packing > .guide-note { margin-top:18px; border:1px solid #d7e5f4; border-radius:11px; background:#f5f9ff; }
-    .guide-card,.packing-card { border-color:#d7e0e9; }
+    .guide-card,.packing-card { border-color:#d7e0e9; transform:none!important; transition:none!important; }
     .guide-visual,.guide-visual.sight { min-height:68px; padding:12px 18px; background:#f4f7fa; color:#294766; font-size:1.9rem; }
     .travel-checks { padding:0; border:0; border-radius:0; background:transparent; }
     .travel-checks .info-grid { grid-template-columns:1fr 1fr; }
